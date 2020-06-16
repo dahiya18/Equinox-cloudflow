@@ -1,3 +1,5 @@
+package is.equinox.cloudflow.source.twitter;
+
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 

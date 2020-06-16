@@ -1,3 +1,5 @@
+package is.equinox.cloudflow.source.twitter;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
