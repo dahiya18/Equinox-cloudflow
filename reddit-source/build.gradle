@@ -10,11 +10,13 @@ sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
+	jcenter()
 }
 
 dependencies {
 	// put Spring Cloud Data Flow dependencies here instead of this
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile "net.dean.jraw:JRAW:1.1.0"
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
