@@ -40,6 +40,23 @@ dependencies {
     implementation 'org.springframework.kafka:spring-kafka'
 }
 
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File',
+                'Implementation-Version': archiveVersion,
+                'Main-Class': 'is.equinox.cloudflow.source.stockexchange'
+    }
+    archiveBaseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
 test {
     useJUnitPlatform()
+}
+
+//In case if multiple mains are present
+springBoot {
+    mainClassName = 'is.equinox.cloudflow.source.stockexchange.StockExchangeSourceAppEntry'
 }
