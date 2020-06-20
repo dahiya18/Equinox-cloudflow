@@ -28,7 +28,7 @@ public class RedditSourceAppEntry implements ApplicationRunner, ApplicationConte
 
 	@Override
 	public void run(ApplicationArguments appArgs) throws Exception {
-		System.out.println("Hello World!");
+		RedditApp.queryReddit();
 		SpringApplication.exit(applicationContext, () -> 0);
 	}
 

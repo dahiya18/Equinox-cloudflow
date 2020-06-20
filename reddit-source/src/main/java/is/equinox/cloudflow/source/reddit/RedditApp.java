@@ -14,6 +14,7 @@ import net.dean.jraw.pagination.DefaultPaginator;
 import net.dean.jraw.references.SubredditReference;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import java.io.IOException;
 
 
 @SpringBootApplication
@@ -30,10 +31,9 @@ public class RedditApp {
     public static NetworkAdapter networkAdapter = new OkHttpNetworkAdapter(userAgent);
     public static RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
 
-    public static void main(String[] args) {
+    public static void queryReddit() throws IOException{
 
         String subR="StockMarket";
-        StringBuilder fivePosts = new StringBuilder();
         SubredditReference subreddit = redditClient.subreddit(subR);
 
         //check if subreddit is valid before moving on
@@ -63,8 +63,10 @@ public class RedditApp {
             System.out.println("Score:  " + post.getScore());
             System.out.println("\n");
         }
+
     }
 
 }
+
 
 

@@ -26,3 +26,6 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+springBoot {
+	mainClassName = 'is.equinox.cloudflow.source.stockexchange.RedditSourceAppEntry'
+}
