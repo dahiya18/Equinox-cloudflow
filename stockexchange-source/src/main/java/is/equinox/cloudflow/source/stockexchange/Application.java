@@ -5,14 +5,17 @@ import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
+import org.apache.commons.lang3.StringUtils;
 import java.io.IOException;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"is.equinox"})
 public class Application {
 
+    @Bean
     public static void queryStocks() throws IOException {
         final String function = "GLOBAL_QUOTE";
         final String symbol = "TSLA";
@@ -27,6 +30,8 @@ public class Application {
                         "&apikey=" + api)
         );
         String rawResponse = request.execute().parseAsString();
+        String stockPrice = StringUtils.substringBetween(rawResponse, "price\": \"", "\",");
         System.out.println(rawResponse);
+        System.out.println(stockPrice);
     }
 }

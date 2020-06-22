@@ -20,7 +20,9 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.7.0-M1')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.7.0-M1')
+
     compile 'com.google.http-client:google-http-client:1.35.0'
 
     // put Spring Cloud Data Flow dependencies here instead of this
@@ -32,8 +34,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream-binder-kafka
     compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-kafka', version: '3.0.5.RELEASE'
 
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    // string formatting
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
 
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.apache.kafka:kafka-streams'
@@ -56,7 +59,7 @@ test {
     useJUnitPlatform()
 }
 
-//In case if multiple mains are present
-springBoot {
-    mainClassName = 'is.equinox.cloudflow.source.stockexchange.StockExchangeSourceAppEntry'
-}
+////In case if multiple mains are present
+//springBoot {
+//    mainClassName = 'is.equinox.cloudflow.source.stockexchange.StockExchangeSourceAppEntry'
+//}
