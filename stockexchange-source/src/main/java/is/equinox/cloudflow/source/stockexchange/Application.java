@@ -1,37 +1,44 @@
 package is.equinox.cloudflow.source.stockexchange;
 
-import com.google.api.client.http.GenericUrl;
-import com.google.api.client.http.HttpRequest;
-import com.google.api.client.http.HttpRequestFactory;
-import com.google.api.client.http.javanet.NetHttpTransport;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-import org.apache.commons.lang3.StringUtils;
 import java.io.IOException;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"is.equinox"})
 public class Application {
 
-    @Bean
-    public static void queryStocks() throws IOException {
-        final String function = "GLOBAL_QUOTE";
-        final String symbol = "TSLA";
-        final String interval = null;
-        final String api = "A5K060RWV2X3BVP5";
+    public static String function = "TIME_SERIES_INTRADAY";
+    public static String symbol = "TSLA";
+    public static String interval = "60min";
+    public static String api = "A5K060RWV2X3BVP5";
 
-        HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
-        HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(
-                "https://www.alphavantage.co/query?function=" + function +
-                        "&symbol=" + symbol +
-                        "&interval=" + interval +
-                        "&apikey=" + api)
-        );
-        String rawResponse = request.execute().parseAsString();
-        String stockPrice = StringUtils.substringBetween(rawResponse, "price\": \"", "\",");
-        System.out.println(rawResponse);
-        System.out.println(stockPrice);
+    @Bean
+    public static String getOutput() throws IOException {
+
+        if(function.equals("GLOBAL_QUOTE")) {
+            Quote.queryStocks(function, symbol, interval, api);
+            System.out.println(Quote.getPrice());
+            System.out.println(Quote.getRawResponse());
+            return Quote.getPrice();
+        }
+        else if(function.equals("TIME_SERIES_INTRADAY") || function.equals("TIME_SERIES_DAILY")) {
+            TimeSeries.queryStocks(function, symbol, interval, api);
+            System.out.println(TimeSeries.getRawResponse());
+            return TimeSeries.getRawResponse();
+        }
+        else {
+            System.out.println("Incorrect function.");
+            return null;
+        }
+    }
+
+    public static void setParams(String function, String symbol, String interval, String api) {
+        is.equinox.cloudflow.source.stockexchange.Application.function = function;
+        is.equinox.cloudflow.source.stockexchange.Application.symbol = symbol;
+        is.equinox.cloudflow.source.stockexchange.Application.interval = interval;
+        is.equinox.cloudflow.source.stockexchange.Application.api = api;
     }
 }

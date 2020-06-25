@@ -25,7 +25,7 @@ public class StockExchangeSourceAppEntry implements ApplicationRunner, Applicati
 
 	@Override
 	public void run(ApplicationArguments args) throws IOException {
-
+//		Application.queryStocks();
 		SpringApplication.exit(applicationContext, () -> 0);
 	}
 
