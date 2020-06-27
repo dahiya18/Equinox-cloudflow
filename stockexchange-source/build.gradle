@@ -20,40 +20,42 @@ repositories {
 }
 
 dependencies {
-    testImplementation('org.junit.jupiter:junit-jupiter-api:5.7.0-M1')
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.7.0-M1')
-
     compile 'com.google.http-client:google-http-client:1.35.0'
 
-    // put Spring Cloud Data Flow dependencies here instead of this
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // google http client
+    // https://mvnrepository.com/artifact/com.google.apis/google-api-services-analytics
+    compile group: 'com.google.apis', name: 'google-api-services-analytics', version: 'v3-rev169-1.25.0'
 
+    // Spring Cloud Data Flow
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.apache.kafka:kafka-streams'
+    implementation 'org.springframework.kafka:spring-kafka'
+
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream-binder-kafka
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-kafka', version: '3.0.5.RELEASE'
+
+    // testing
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream-binder-kafka
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-kafka', version: '3.0.5.RELEASE'
 
     // string formatting
     // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
-
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.apache.kafka:kafka-streams'
-    implementation 'org.springframework.kafka:spring-kafka'
 }
 
-//create a single Jar with all dependencies
-task fatJar(type: Jar) {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File',
-                'Implementation-Version': archiveVersion,
-                'Main-Class': 'is.equinox.cloudflow.source.stockexchange'
-    }
-    archiveBaseName = project.name + '-all'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
-}
+////create a single Jar with all dependencies
+//task fatJar(type: Jar) {
+//    manifest {
+//        attributes 'Implementation-Title': 'Gradle Jar File',
+//                'Implementation-Version': archiveVersion,
+//                'Main-Class': 'is.equinox.cloudflow.source.stockexchange'
+//    }
+//    archiveBaseName = project.name + '-all'
+//    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//    with jar
+//}
 
 test {
     useJUnitPlatform()
