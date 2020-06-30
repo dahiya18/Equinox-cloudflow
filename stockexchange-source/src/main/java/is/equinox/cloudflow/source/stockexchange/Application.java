@@ -15,7 +15,7 @@ public class Application {
     public static String function = "TIME_SERIES_INTRADAY";
     public static String symbol = "TSLA";
     public static String interval = "60min";
-    public static String api = "A5K060RWV2X3BVP5";
+    private static String api = "A5K060RWV2X3BVP5";
 
 //    @Bean
 //    @InboundChannelAdapter(
@@ -46,7 +46,7 @@ public class Application {
         }
         else if (function.equals("GLOBAL_QUOTE")) {
             String[] price = new String[1];
-            price[0] = Quote.getPrice();
+            price[0] = getQuote();
             return price;
         }
         else {
