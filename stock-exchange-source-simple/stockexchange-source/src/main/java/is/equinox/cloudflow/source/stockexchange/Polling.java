@@ -12,7 +12,6 @@ import org.springframework.messaging.support.MessageBuilder;
 
 import java.io.IOException;
 
-@EnableBinding(Source.class)
 @SpringBootApplication
 @ComponentScan(basePackages = {"is.equinox"})
 public class Polling {
