@@ -12,13 +12,8 @@ import net.dean.jraw.oauth.Credentials;
 import net.dean.jraw.oauth.OAuthHelper;
 import net.dean.jraw.pagination.DefaultPaginator;
 import net.dean.jraw.references.SubredditReference;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import java.io.IOException;
 
-
-@SpringBootApplication
-@ComponentScan(basePackages = {"is.equinox"})
 
 public class RedditApp {
     static String userName = "gaganeq";
@@ -31,20 +26,19 @@ public class RedditApp {
     public static NetworkAdapter networkAdapter = new OkHttpNetworkAdapter(userAgent);
     public static RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
 
-    public static void queryReddit() throws IOException{
-
-        String subR="StockMarket";
+    public static String queryReddit(String subR,int n) throws IOException{
+        StringBuilder Posts = new StringBuilder();
         SubredditReference subreddit = redditClient.subreddit(subR);
 
         //check if subreddit is valid before moving on
         try{
             subreddit.about().getFullName();
         }catch (Exception E){
-            System.out.println("Error");
+            return "Error Subreddit not found";
         }
 
         //Get only n posts from the category the user input
-        DefaultPaginator<Submission> paginator = subreddit.posts().limit(30).sorting(SubredditSort.NEW).build();
+        DefaultPaginator<Submission> paginator = subreddit.posts().limit(n).sorting(SubredditSort.NEW).build();
 
         Listing<Submission> firstPage = null;
 
@@ -52,18 +46,24 @@ public class RedditApp {
         try {
             firstPage = paginator.next();
         }catch (NetworkException nE) {
-            System.out.println("Error");
+            return "Error";
         }
 
         //iterate through page to get posts
         for (Submission post : firstPage) {
-            System.out.println("Title:  " + post.getTitle());
-            System.out.println("URL:  " + post.getUrl());
-            System.out.println("Author:  " + post.getAuthor());
-            System.out.println("Score:  " + post.getScore());
-            System.out.println("\n");
+            //System.out.println("Title:  " + post.getTitle());
+            //System.out.println("URL:  " + post.getUrl());
+            //System.out.println("Author:  " + post.getAuthor());
+            //System.out.println("Score:  " + post.getScore());
+            //System.out.println("\n");
+            Posts.append( "Title:     "+ post.getTitle() + "\n"+
+                            "URL:       " + post.getUrl() +" \n"  +
+                            "Author:    " + post.getAuthor() + "\n" +
+                            "Score:     " + post.getScore() + "\n" +
+                            "SubReddit:  " + post.getSubreddit() + "\n" +
+                            "Thumbnail:  " + post.getThumbnail()+ "\n\n");
         }
-
+        return Posts.toString();
     }
 
 }

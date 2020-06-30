@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
+
 @SpringBootApplication
 @ComponentScan(basePackages = {"is.equinox"})
 public class RedditSourceAppEntry implements ApplicationRunner, ApplicationContextAware {
@@ -21,6 +22,7 @@ public class RedditSourceAppEntry implements ApplicationRunner, ApplicationConte
 		SpringApplication.run(RedditSourceAppEntry.class, args);
 	}
 
+
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = (ConfigurableApplicationContext)applicationContext;
@@ -28,7 +30,6 @@ public class RedditSourceAppEntry implements ApplicationRunner, ApplicationConte
 
 	@Override
 	public void run(ApplicationArguments appArgs) throws Exception {
-		RedditApp.queryReddit();
 		SpringApplication.exit(applicationContext, () -> 0);
 	}
 
