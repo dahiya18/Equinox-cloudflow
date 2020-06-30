@@ -12,6 +12,16 @@ repositories {
 	mavenCentral()
 }
 
+jar {
+	manifest {
+		attributes "Main-Class": "is.equinox.cloudflow.source.twitter.TwitterSourceAppEntry"
+	}
+
+	from {
+		configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+}
+
 dependencies {
 	// put Spring Cloud Data Flow dependencies here instead of this
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -20,6 +30,13 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 	compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.7'
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.3.1.RELEASE'
+	compile group: 'org.springframework', name: 'spring-context', version: '5.2.7.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
+	runtime group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: 'Hoxton.SR6', ext: 'pom'
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-stream-rabbit
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-rabbit', version: '3.0.6.RELEASE'
+
 }
 
 test {
