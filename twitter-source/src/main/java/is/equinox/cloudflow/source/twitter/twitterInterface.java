@@ -23,12 +23,14 @@ public interface twitterInterface {
    public void setAuth(String conKey, String conSecret, String token, String tokenSecret);
 
     /**
-     *
-     * @return
+     * Searches for the queryWord in twitter and gives the results
+     * in the form of JSON strings
+     * @param twitter is the Twitter object used to make queries
+     * @param queryWord is the query string serached for
+     * @return list of JSON strings
+     * @throws TwitterException
      */
-   public List<String> getResultTweets();
    public List<String> searchQuery(Twitter twitter, String queryWord) throws TwitterException;
-   public List<String> getMyTimeline(Twitter twitter) throws TwitterException;
 
 
 }
