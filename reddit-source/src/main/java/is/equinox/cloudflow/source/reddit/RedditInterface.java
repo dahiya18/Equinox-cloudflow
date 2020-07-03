@@ -11,19 +11,19 @@ import org.springframework.messaging.support.MessageBuilder;
 
 import java.io.IOException;
 
-@EnableBinding(Source.class)
 @SpringBootApplication
 @ComponentScan(basePackages = {"is.equinox"})
 public class RedditInterface {
     @Bean
     @InboundChannelAdapter(
             value = Source.OUTPUT,
-            poller = @Poller(fixedDelay = "12000", maxMessagesPerPoll = "1")
+            poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1")
     )
     public static MessageSource<String> redditMessageSource() throws IOException {
+        //System.out.println(RedditApp.queryReddit("tesla",10));
         return () -> {
             try {
-                return MessageBuilder.withPayload(RedditApp.queryReddit("apple",10)).build();
+                return MessageBuilder.withPayload(RedditApp.queryReddit("tesla",10)).build();
             } catch (IOException error) {
                 error.printStackTrace();
                 return null;

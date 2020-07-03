@@ -7,14 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RedditSourceAppEntryTest {
 
-	@Test
-	public void testForValidReddit() throws IOException {
-		assertEquals(RedditApp.queryReddit("appler",10),"Error");
-	}
-	@Test
-	public void testForPolling() throws IOException{
-		assertNull(RedditInterface.redditMessageSource());
-	}
+	//@Test
+	//public void testForValidReddit() throws IOException {
+	//	assertEquals(RedditApp.queryReddit("appler",10),"Error");
+	//}
+	//@Test
+	//public void testForPolling() throws IOException{
+	//	assertNull(RedditInterface.redditMessageSource());
+	//}
 
 
 

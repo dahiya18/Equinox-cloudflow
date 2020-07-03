@@ -15,8 +15,6 @@ repositories {
 }
 
 dependencies {
-	testImplementation('org.junit.jupiter:junit-jupiter-api:5.7.0-M1')
-	testRuntime('org.junit.jupiter:junit-jupiter-engine:5.7.0-M1')
 	// put Spring Cloud Data Flow dependencies here instead of this
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compile "net.dean.jraw:JRAW:1.1.0"
@@ -26,16 +24,13 @@ dependencies {
 	}
 	compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-kafka', version: '3.0.5.RELEASE'
 
-	// string formatting
-	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
-	compile group: 'org.springframework', name: 'spring-context', version: '5.2.7.RELEASE'
-	runtime group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: 'Hoxton.SR6', ext: 'pom'
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-rabbit', version: '3.0.6.RELEASE'
-
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.apache.kafka:kafka-streams'
-	implementation 'org.springframework.kafka:spring-kafka'
+	//implementation 'org.springframework.kafka:spring-kafka'
+	//compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-kafka', version: '3.0.5.RELEASE'
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+	runtime group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: 'Hoxton.SR6', ext: 'pom'
 
 }
 
