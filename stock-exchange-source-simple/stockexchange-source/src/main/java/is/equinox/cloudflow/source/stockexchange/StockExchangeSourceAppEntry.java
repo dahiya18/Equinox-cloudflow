@@ -1,39 +1,32 @@
 package is.equinox.cloudflow.source.stockexchange;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-@EnableBinding(Source.class)
+import java.io.IOException;
+
 @SpringBootApplication
 @ComponentScan(basePackages = {"is.equinox"})
+@EnableBinding(Source.class)
 public class StockExchangeSourceAppEntry implements ApplicationRunner, ApplicationContextAware {
 
     private ConfigurableApplicationContext applicationContext;
 
-    private static Logger logger = LoggerFactory.getLogger(is.equinox.cloudflow.source.stockexchange.StockExchangeSourceAppEntry.class);
-
-    @StreamListener(Source.OUTPUT)
-    public void loggerSink(String date) {
-        logger.info("Received: " + date);
-    }
-
     public static void main(String[] args){
-        System.setProperty("user.timezone", "UTC");
-        SpringApplication.run(is.equinox.cloudflow.source.stockexchange.StockExchangeSourceAppEntry.class, args);
+        SpringApplication.run(StockExchangeSourceAppEntry.class, args);
     }
 
     @Override
-    public void run(ApplicationArguments args) {
+    public void run(ApplicationArguments args) throws IOException {
         SpringApplication.exit(applicationContext, () -> 0);
     }
 

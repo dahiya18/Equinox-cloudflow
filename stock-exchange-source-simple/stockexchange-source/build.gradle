@@ -26,14 +26,13 @@ dependencies {
     // https://mvnrepository.com/artifact/com.google.apis/google-api-services-analytics
     compile group: 'com.google.apis', name: 'google-api-services-analytics', version: 'v3-rev169-1.25.0'
 
-    // Spring Cloud Data Flow
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.apache.kafka:kafka-streams'
-    implementation 'org.springframework.kafka:spring-kafka'
-
-    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream-binder-kafka
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-kafka', version: '3.0.5.RELEASE'
+    //spring cloud dataflow
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.3.1.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '5.2.7.RELEASE'
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
+    runtime group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: 'Hoxton.SR6', ext: 'pom'
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-stream-rabbit
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-rabbit', version: '3.0.6.RELEASE'
 
     // testing
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

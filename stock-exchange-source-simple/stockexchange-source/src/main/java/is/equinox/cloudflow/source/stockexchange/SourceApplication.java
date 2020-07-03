@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"is.equinox"})
-public class Application {
+public class SourceApplication {
 
     // https://www.alphavantage.co/documentation/
     public static String function = "GLOBAL_QUOTE";
@@ -26,8 +26,8 @@ public class Application {
                 "https://www.alphavantage.co/query?function=" + function +
                         "&symbol=" + symbol +
                         "&interval=" + interval +
-                        "&apikey=" + api));
-
+                        "&apikey=" + api)
+        );
         String rawResponse = request.execute().parseAsString();
 
         String getPrice = StringUtils.substringBetween(rawResponse, "price\": \"", "\",");
