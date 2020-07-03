@@ -5,13 +5,13 @@ import twitter4j.TwitterException;
 
 import java.util.List;
 
-public class twitterApp {
+public class TwitterApp {
 
 
     public static List<String> main() {
 
         System.out.println(".\n.\nProgram starting:\n.\n.\n...........................\n");
-        twitterClass twitterObject = new twitterClass();
+        TwitterClass twitterObject = new TwitterClass();
         Twitter twitter = twitterObject.makeConnection();
         List<String> tweets = null;
         try {

@@ -6,7 +6,7 @@ import twitter4j.conf.ConfigurationBuilder;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class twitterClass implements twitterInterface {
+public class TwitterClass implements TwitterInterface {
 
 
     private String consumerKey = "dZFcwxXoeG2WqoWV40hTAGoS0";

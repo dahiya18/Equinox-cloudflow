@@ -13,7 +13,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 import java.util.List;
-
 @EnableBinding(Source.class)
 @SpringBootApplication
 @ComponentScan(basePackages = {"is.equinox"})
@@ -25,19 +24,11 @@ public class TwitterSourceAppEntry implements ApplicationRunner,ApplicationConte
 		System.setProperty("user.timezone", "UTC");
 		SpringApplication.run(TwitterSourceAppEntry.class, args);
 	}
-/*
-	@Bean
-	@InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
-	public MessageSource<List<String>> twitterMessageSource() {
 
-		return () -> MessageBuilder.withPayload(twitterApp.main()).build();
-	}
-
-*/
 	@Override
 	public void run(ApplicationArguments appArgs) throws Exception {
 		System.out.println("Hello World!");
-		List<String> result = twitterApp.main();
+		List<String> result = TwitterApp.main();
 		SpringApplication.exit(applicationContext, () -> 0);
 	}
 

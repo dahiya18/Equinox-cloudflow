@@ -5,7 +5,7 @@ import twitter4j.TwitterException;
 
 import java.util.List;
 
-public interface twitterInterface {
+public interface TwitterInterface {
 
     /**
      * Establishes a connection using the twitter4j library
