@@ -60,7 +60,7 @@ test {
     useJUnitPlatform()
 }
 
-////In case if multiple mains are present
+//In case if multiple mains are present
 //springBoot {
 //    mainClassName = 'is.equinox.cloudflow.source.stockexchange.StockExchangeSourceAppEntry'
 //}
