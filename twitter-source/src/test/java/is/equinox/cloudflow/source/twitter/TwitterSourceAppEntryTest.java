@@ -13,7 +13,7 @@ public class TwitterSourceAppEntryTest {
      */
     @Test
     public void auth_test(){
-        twitterClass tc = new twitterClass();
+        TwitterClass tc = new TwitterClass();
         tc.setAuth("abc", "abc", "abc", "abc");
         Twitter tw = tc.makeConnection();
 	    assertThrows(TwitterException.class, () -> tc.searchQuery(tw,"tesla"));
