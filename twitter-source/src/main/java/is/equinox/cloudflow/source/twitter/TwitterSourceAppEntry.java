@@ -20,10 +20,10 @@ public class TwitterSourceAppEntry implements ApplicationRunner,ApplicationConte
 
 	private ConfigurableApplicationContext applicationContext;
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		System.setProperty("user.timezone", "UTC");
 		SpringApplication.run(TwitterSourceAppEntry.class, args);
-	}
+	}*/
 
 	@Override
 	public void run(ApplicationArguments appArgs) throws Exception {
