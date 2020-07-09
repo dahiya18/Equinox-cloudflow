@@ -4,9 +4,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -14,15 +11,13 @@ import org.springframework.context.annotation.ComponentScan;
 
 import java.io.IOException;
 
-@SpringBootApplication
 @ComponentScan(basePackages = {"is.equinox"})
-@EnableBinding(Source.class)
-public class StockExchangeSourceAppEntry implements ApplicationRunner, ApplicationContextAware {
+public class AppEntry implements ApplicationRunner, ApplicationContextAware {
 
     private ConfigurableApplicationContext applicationContext;
 
     public static void main(String[] args){
-        SpringApplication.run(StockExchangeSourceAppEntry.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Override
