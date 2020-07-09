@@ -17,7 +17,7 @@ import java.util.List;
 @SpringBootApplication
 @ComponentScan(basePackages = {"is.equinox"})
 public class TwitterSourceAppEntry implements ApplicationRunner,ApplicationContextAware {
-
+/*
 	private ConfigurableApplicationContext applicationContext;
 
 	public static void main(String[] args) {
@@ -36,4 +36,5 @@ public class TwitterSourceAppEntry implements ApplicationRunner,ApplicationConte
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = (ConfigurableApplicationContext) applicationContext;
 	}
+*/	
 }
