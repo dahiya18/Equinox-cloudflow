@@ -20,7 +20,7 @@ public class Application {
     Logger logger = LoggerFactory.getLogger(Application.class);
 
     @Bean
-    @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
+    @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "20000", maxMessagesPerPoll = "1"))
     public MessageSource<Double> addStocks() throws IOException {
         double stocks = Interface.generateStocks();
         logger.info("stocks : {}",stocks);
