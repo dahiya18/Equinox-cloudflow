@@ -26,7 +26,9 @@ public class RedditApp {
     public static NetworkAdapter networkAdapter = new OkHttpNetworkAdapter(userAgent);
     public static RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
 
-    public static String queryReddit(String subR,int n) throws IOException{
+    public static String queryReddit() throws IOException{
+        String subR = "tesla";
+        int n=10;
         StringBuilder Posts = new StringBuilder();
         SubredditReference subreddit = redditClient.subreddit(subR);
 
@@ -51,17 +53,10 @@ public class RedditApp {
 
         //iterate through page to get posts
         for (Submission post : firstPage) {
-            //System.out.println("Title:  " + post.getTitle());
-            //System.out.println("URL:  " + post.getUrl());
-            //System.out.println("Author:  " + post.getAuthor());
-            //System.out.println("Score:  " + post.getScore());
-            //System.out.println("\n");
-            Posts.append( "Title:     "+ post.getTitle() + "\n"+
-                            "URL:       " + post.getUrl() +" \n"  +
-                            "Author:    " + post.getAuthor() + "\n" +
-                            "Score:     " + post.getScore() + "\n" +
-                            "SubReddit:  " + post.getSubreddit() + "\n" +
-                            "Thumbnail:  " + post.getThumbnail()+ "\n\n");
+            Posts.append( "Title:     "+ post.getTitle() + "\n"
+                            + "URL:  " + post.getUrl() + "\n" +
+                        "Author:  " + post.getAuthor() + "\n" +
+                            "Score:  " + post.getScore() + "\n\n");
         }
         return Posts.toString();
     }
