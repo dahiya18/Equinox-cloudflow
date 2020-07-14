@@ -17,7 +17,7 @@ public class TwitterClass implements TwitterInterface {
     public List<String> searchQuery(Twitter twitter, String searchQuery) throws TwitterException{
         Query query = new Query(searchQuery);
         query.setSince("2020-01-26");
-        query.setCount(3);
+        query.setCount(1);
         QueryResult result = twitter.search(query);
         List<Status> tweets = result.getTweets();
         return tweets.stream().map(item -> TwitterObjectFactory.getRawJSON(item))

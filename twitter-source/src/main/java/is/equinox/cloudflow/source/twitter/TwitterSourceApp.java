@@ -1,6 +1,7 @@
 package is.equinox.cloudflow.source.twitter;
 
-import org.springframework.boot.SpringApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Source;
@@ -12,18 +13,21 @@ import org.springframework.integration.support.MessageBuilder;
 
 import java.util.List;
 
-@EnableBinding(Source.class)
 @SpringBootApplication
+@EnableBinding(Source.class)
+//@ComponentScan(basePackages = {"is.equinox"})
 public class TwitterSourceApp {
+
+    Logger logger = LoggerFactory.getLogger(TwitterSourceApp.class);
+
     @Bean
     @InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
-    public MessageSource<List<String>> timeMessageSource() {
-        System.out.println(".................Returning the tweet data\n");
-        return () -> MessageBuilder.withPayload(TwitterApp.main()).build();
-    }
-    public static void main(String[] args) {
-        System.out.println("................Inside twitter source app\n");
-        SpringApplication.run(TwitterSourceApp.class, args);
+    public MessageSource<String> timeMessageSource() {
+        List<String> tweet = TwitterApp.getData();
+
+        logger.info("\n\ntweets : {} \n\n", tweet.get(0));
+
+        return () -> MessageBuilder.withPayload(tweet.get(0)).build();
     }
 
 }

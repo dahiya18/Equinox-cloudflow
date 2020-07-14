@@ -5,10 +5,11 @@ import twitter4j.TwitterException;
 
 import java.util.List;
 
+
 public class TwitterApp {
 
 
-    public static List<String> main() {
+    public static List<String> getData() {
 
         System.out.println(".\n.\nProgram starting:\n.\n.\n...........................\n");
         TwitterClass twitterObject = new TwitterClass();
@@ -16,9 +17,7 @@ public class TwitterApp {
         List<String> tweets = null;
         try {
             tweets = twitterObject.searchQuery(twitter, "tesla");
-            for(String tweet:tweets){
-                System.out.println("\n"+tweet+"\n");
-            }
+
         } catch(TwitterException te){
             System.out.println("\nException found\n");
         }
