@@ -12,7 +12,6 @@ import net.dean.jraw.oauth.Credentials;
 import net.dean.jraw.oauth.OAuthHelper;
 import net.dean.jraw.pagination.DefaultPaginator;
 import net.dean.jraw.references.SubredditReference;
-import java.io.IOException;
 
 
 public class RedditApp {
@@ -26,9 +25,9 @@ public class RedditApp {
     public static NetworkAdapter networkAdapter = new OkHttpNetworkAdapter(userAgent);
     public static RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
 
-    public static String queryReddit() throws IOException{
+    public static String queryReddit() {
         String subR = "tesla";
-        int n=10;
+        int n=30;
         StringBuilder Posts = new StringBuilder();
         SubredditReference subreddit = redditClient.subreddit(subR);
 

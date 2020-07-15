@@ -19,7 +19,7 @@ public class RedditInterface {
     Logger logger = LoggerFactory.getLogger(RedditInterface.class);
 
     @Bean
-    @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "20000", maxMessagesPerPoll = "1"))
+    @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
     public MessageSource<String> RedditData() throws IOException {
         String reddit = RedditApp.queryReddit();
         logger.info("\n\n{}",reddit);
