@@ -13,8 +13,8 @@ import org.springframework.messaging.support.MessageBuilder;
 
 import java.io.IOException;
 
-@SpringBootApplication
-@EnableBinding(Source.class)
+//@SpringBootApplication
+//@EnableBinding(Source.class)
 public class RedditInterface {
     Logger logger = LoggerFactory.getLogger(RedditInterface.class);
 

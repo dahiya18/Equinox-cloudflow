@@ -14,6 +14,8 @@ import net.dean.jraw.pagination.DefaultPaginator;
 import net.dean.jraw.references.SubredditReference;
 
 
+
+
 public class RedditApp {
     static String userName = "gaganeq";
     static String passWord = "@1234@abcd@";
@@ -26,8 +28,8 @@ public class RedditApp {
     public static RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
 
     public static String queryReddit() {
-        String subR = "tesla";
-        int n=30;
+        String subR = "sad";
+        int n=1;
         StringBuilder Posts = new StringBuilder();
         SubredditReference subreddit = redditClient.subreddit(subR);
 
@@ -52,10 +54,12 @@ public class RedditApp {
 
         //iterate through page to get posts
         for (Submission post : firstPage) {
-            Posts.append( "Title:     "+ post.getTitle() + "\n"
-                            + "URL:  " + post.getUrl() + "\n" +
-                        "Author:  " + post.getAuthor() + "\n" +
-                            "Score:  " + post.getScore() + "\n\n");
+            Posts.append( /*"Title:     "+*/ post.getTitle() + "\n" );
+                           // + "URL:  " + post.getUrl() + "\n" +
+                       // "Author:  " + post.getAuthor() + "\n" +
+                         //   "Score:  " + post.getScore() + "\n\n");
+
+
         }
         return Posts.toString();
     }
