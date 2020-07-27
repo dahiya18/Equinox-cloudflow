@@ -14,8 +14,6 @@ import net.dean.jraw.pagination.DefaultPaginator;
 import net.dean.jraw.references.SubredditReference;
 
 
-
-
 public class RedditApp {
     static String userName = "gaganeq";
     static String passWord = "@1234@abcd@";
@@ -28,8 +26,8 @@ public class RedditApp {
     public static RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
 
     public static String queryReddit() {
-        String subR = "sad";
-        int n=1;
+        String subR = "tesla";
+        int n = 5;
         StringBuilder Posts = new StringBuilder();
         SubredditReference subreddit = redditClient.subreddit(subR);
 
@@ -43,7 +41,7 @@ public class RedditApp {
         //Get only n posts from the category the user input
         DefaultPaginator<Submission> paginator = subreddit.posts().limit(n).sorting(SubredditSort.NEW).build();
 
-        Listing<Submission> firstPage = null;
+        Listing<Submission> firstPage;
 
         //if the subreddit doesn't exist then return error
         try {
@@ -54,13 +52,13 @@ public class RedditApp {
 
         //iterate through page to get posts
         for (Submission post : firstPage) {
-            Posts.append( /*"Title:     "+*/ post.getTitle() + "\n" );
-                           // + "URL:  " + post.getUrl() + "\n" +
-                       // "Author:  " + post.getAuthor() + "\n" +
-                         //   "Score:  " + post.getScore() + "\n\n");
+            Posts.append( /*"Title:     "+*/ post.getTitle() + "\n" +
+                            post.getSelfText() + "\n" );
 
 
         }
+
+
         return Posts.toString();
     }
 

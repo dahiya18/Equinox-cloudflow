@@ -1,5 +1,6 @@
 package is.equinox.cloudflow.source.reddit;
 
+
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.neural.rnn.RNNCoreAnnotations;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -12,7 +13,6 @@ import java.util.Properties;
 
 public class RedditSentiment {
     public static SentimentType analyseReddit(String reddit) {
-
         Properties props = new Properties();
         int Sentiment = 0;
         props.setProperty("annotators", "tokenize, ssplit, pos, parse, sentiment");

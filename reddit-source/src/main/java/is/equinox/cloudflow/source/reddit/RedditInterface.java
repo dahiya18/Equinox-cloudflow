@@ -20,9 +20,9 @@ public class RedditInterface {
 
     @Bean
     @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
-    public MessageSource<String> RedditData() throws IOException {
-        String reddit = RedditApp.queryReddit();
-        logger.info("\n\n{}",reddit);
+    public MessageSource<String> RedditData() {
+        String reddit = RedditStream.queryReddit();
+        logger.info("\n\n {}",reddit );
         return ()-> MessageBuilder.withPayload(reddit).build();
     }
 
