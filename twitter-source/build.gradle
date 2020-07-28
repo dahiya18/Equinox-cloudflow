@@ -35,10 +35,12 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
 	runtime group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: 'Hoxton.SR6', ext: 'pom'
 	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-stream-kafka
-	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-kafka', version: '3.0.6.RELEASE'
+	//compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-kafka', version: '3.0.6.RELEASE'
 	// https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka
 	//compile group: 'org.springframework.kafka', name: 'spring-kafka', version: '2.5.3.RELEASE'
 
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream-binder-kafka
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-kafka', version: '3.0.5.RELEASE'
 
 }
 
