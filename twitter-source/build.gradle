@@ -6,10 +6,20 @@ plugins {
 
 group = 'is.equinox'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
+}
+
+jar {
+	manifest {
+		attributes "Main-Class": "is.equinox.cloudflow.source.twitter.TwitterSourceAppEntry"
+	}
+
+	from {
+		configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	}
 }
 
 dependencies {
@@ -19,6 +29,19 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.7'
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.3.1.RELEASE'
+	compile group: 'org.springframework', name: 'spring-context', version: '5.2.7.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
+	runtime group: 'org.springframework.cloud', name: 'spring-cloud-dependencies', version: 'Hoxton.SR6', ext: 'pom'
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-stream-kafka
+	//compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-stream-kafka', version: '3.0.6.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka
+	//compile group: 'org.springframework.kafka', name: 'spring-kafka', version: '2.5.3.RELEASE'
+
+	// https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream-binder-kafka
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-stream-binder-kafka', version: '3.0.5.RELEASE'
+
 }
 
 test {
