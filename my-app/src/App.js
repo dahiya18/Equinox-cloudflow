@@ -1,10 +1,113 @@
 import React, {Component} from 'react';
 import logo from './equinox-logo.svg';
-import './App.css';
 import {Helmet} from "react-helmet";
+import { render } from 'react-dom';
+import Highcharts from 'highcharts/highstock';
+import HighchartsReact from 'highcharts-react-official';
+import './App.css';
+
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getData = this.getData.bind(this);
+    this.optionsSocial = {
+
+        chart: {
+          zoomType: 'x'
+        },
+
+        title: {
+          text: 'Highcharts drawing ' + 50000 + ' points'
+        },
+
+        subtitle: {
+          text: 'Social Response'
+        },
+
+        tooltip: {
+          valueDecimals: 2
+        },
+
+        xAxis: {
+          type: 'datetime'
+        },
+
+        series: [{
+          data: this.getData(),
+          lineWidth: 0.5,
+          name: 'Hourly data points'
+        }]
+
+      };
+      this.optionsStock = {
+
+          chart: {
+            zoomType: 'x'
+          },
+
+          title: {
+            text: 'Highcharts drawing ' + 50000 + ' points'
+          },
+
+          subtitle: {
+            text: 'Stock Market'
+          },
+
+          tooltip: {
+            valueDecimals: 2
+          },
+
+          xAxis: {
+            type: 'datetime'
+          },
+
+          series: [{
+            data: this.getData(),
+            lineWidth: 0.5,
+            name: 'Hourly data points'
+          }]
+
+        };
+  }
+
+  /* Dummy function to get data points */
+   getData() {
+    var arr = [],
+      i,
+      x,
+      a,
+      b,
+      c,
+      spike;
+    var n = 50000;
+    for (
+      i = 0, x = Date.UTC(new Date().getUTCFullYear(), 0, 1) - n * 36e5;
+      i < n;
+      i = i + 1, x = x + 36e5
+    ) {
+      if (i % 100 === 0) {
+        a = 2 * Math.random();
+      }
+      if (i % 1000 === 0) {
+        b = 2 * Math.random();
+      }
+      if (i % 10000 === 0) {
+        c = 2 * Math.random();
+      }
+      if (i % 50000 === 0) {
+        spike = 10;
+      } else {
+        spike = 0;
+      }
+      arr.push([
+        x,
+        2 * Math.sin(i / 100) + a + b + c + spike + Math.random()
+      ]);
+    }
+    return arr;
+  }
 
   render () {
     return (
@@ -33,9 +136,12 @@ class App extends React.Component {
     document.write('<script src="https://getbootstrap.com/docs/4.5/assets/js/vendor/jquery.slim.min.js" />')
   }
   <script src="https://getbootstrap.com/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"/>
-    <script src="https://getbootstrap.com/docs/4.5/examples/dashboard/dashboard.js"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"/>
+  <script src="https://getbootstrap.com/docs/4.5/examples/dashboard/dashboard.js"/>
+  <script src="https://code.highcharts.com/highcharts.js" />
+  <script src="https://code.highcharts.com/modules/boost.js" />
+  <script src="https://code.highcharts.com/modules/exporting.js" />
 </Helmet>
     <nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" style = {{backgroundColor:"#5F3EA7"}}>
       <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#"> <img src={logo} height="auto" width="auto"/></a>
@@ -144,7 +250,30 @@ class App extends React.Component {
         </div>
       </div>
 
-      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+      {/*<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>*/}
+      <div id="container">
+      <HighchartsReact
+      class = "highcharts-figure"
+      highcharts={Highcharts}
+      options={this.optionsSocial}
+      />
+      </div>
+      <div id = "container">
+      <HighchartsReact
+      class = "highcharts-figure"
+      highcharts={Highcharts}
+      constructorType={'stockChart'}
+      options={this.optionsStock}
+      />
+      </div>
+
+
+      <p class="highcharts-description">
+    Using the Highcharts Boost module, it is possible to render large amounts
+    of data on the client side. These chart shows a line series with large set of
+    data points. Click and drag in the chart to zoom in.
+      </p>
+
 
       <h2>Section title</h2>
       <div class="table-responsive">
@@ -278,36 +407,6 @@ class App extends React.Component {
   </div>
 </div>
 
-{/*
-    <div className="App">
-      <header className="App-header">
-      <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#project">Project Details</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
-      </div>
-        <h2> CLOUDFLOW </h2>
-          Enter the company name to perform sentiment analysis.
-        <form>
-          <label>
-            Company :
-            <input type="text" name="name" />
-          </label>
-          <button onClick={() => alert('Click')}>
-            Visualize
-          </button>
-        </form>
-    {/*    <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Generate graph
-        </a> */} {/*}
-      </header>
-    </div> */ }
 
 </div>
   );
