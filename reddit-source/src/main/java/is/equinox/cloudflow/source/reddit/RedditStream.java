@@ -18,6 +18,9 @@ import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class RedditStream {
     static String userName = "gaganeq";
@@ -31,10 +34,12 @@ public class RedditStream {
     public static RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
 
 
-    public static String queryReddit() {
-        String subR = "StockMarket";
-        int n = 1;
-        String searching = "[Watchlist]";
+    public static String queryReddit(String subR,int n,String searching) {
+        //String subR = "StockMarket";
+        //int n = 1;
+        //String searching = "[Watchlist]";
+        Logger logger = LoggerFactory.getLogger(RedditStream.class);
+
         StringBuilder Postscore = new StringBuilder();
 
         SearchPaginator search = redditClient.subreddit(subR)
@@ -66,6 +71,7 @@ public class RedditStream {
         Duration processingTime = Duration.ofMillis(System.currentTimeMillis() - startTime);
         long minutes = processingTime.toMinutes();
         long seconds = processingTime.minusMinutes(minutes).getSeconds();
+        logger.info("Analyzed {} comments in {} minutes and {} seconds", commentCount.get(), minutes, seconds);
         return Postscore.toString();
     }
 }

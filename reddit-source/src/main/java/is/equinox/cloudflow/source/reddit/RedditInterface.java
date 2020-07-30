@@ -11,17 +11,15 @@ import org.springframework.integration.annotation.Poller;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.messaging.support.MessageBuilder;
 
-import java.io.IOException;
-
 //@SpringBootApplication
-//@EnableBinding(Source.class)
+///@EnableBinding(Source.class)
 public class RedditInterface {
     Logger logger = LoggerFactory.getLogger(RedditInterface.class);
 
     @Bean
     @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
     public MessageSource<String> RedditData() {
-        String reddit = RedditStream.queryReddit();
+        String reddit = RedditStream.queryReddit("StockMarket",1,"stock");
         logger.info("\n\n {}",reddit );
         return ()-> MessageBuilder.withPayload(reddit).build();
     }
