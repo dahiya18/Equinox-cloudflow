@@ -17,7 +17,7 @@ public class TwitterSourceAppEntry implements ApplicationRunner,ApplicationConte
 
 	public static void main(String[] args) {
 		System.setProperty("user.timezone", "UTC");
-		SpringApplication.run(TwitterSourceApp.class, args);
+		SpringApplication.run(TwitterController.class, args);
 	}
 
 	@Override

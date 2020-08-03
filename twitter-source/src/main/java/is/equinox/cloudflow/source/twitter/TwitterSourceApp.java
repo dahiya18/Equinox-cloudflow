@@ -13,8 +13,8 @@ import org.springframework.integration.support.MessageBuilder;
 
 import java.util.List;
 
-@SpringBootApplication
-@EnableBinding(Source.class)
+//@SpringBootApplication
+//@EnableBinding(Source.class)
 //@ComponentScan(basePackages = {"is.equinox"})
 public class TwitterSourceApp {
 
@@ -23,11 +23,12 @@ public class TwitterSourceApp {
     @Bean
     @InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
     public MessageSource<String> timeMessageSource() {
-        List<String> tweet = TwitterApp.getData();
+        //List<String> tweet = TwitterApp.getData();
+        String Twitter = "hi";
 
-        logger.info("\n\ntweets : {} \n\n", tweet.get(0));
+        logger.info("\n\ntweets  \n\n");
 
-        return () -> MessageBuilder.withPayload(tweet.get(0)).build();
+        return () -> MessageBuilder.withPayload(Twitter).build();
     }
 
 }
