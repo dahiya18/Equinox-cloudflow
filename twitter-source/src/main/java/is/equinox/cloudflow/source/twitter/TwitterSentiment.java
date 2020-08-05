@@ -11,7 +11,7 @@ import edu.stanford.nlp.util.CoreMap;
 import java.util.Properties;
 
 public class TwitterSentiment {
-    public static SentimentType analyseTwitter(String twitter) {
+    public SentimentType analyseTwitter(String twitter) {
         Properties props = new Properties();
         int Sentiment = 0;
         props.setProperty("annotators", "tokenize, ssplit, pos, parse, sentiment");

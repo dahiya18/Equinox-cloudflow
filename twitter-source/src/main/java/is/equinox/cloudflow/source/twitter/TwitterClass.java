@@ -1,12 +1,9 @@
 package is.equinox.cloudflow.source.twitter;
 
-import reactor.core.publisher.Flux;
+
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class TwitterClass {
 

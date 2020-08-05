@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import twitter4j.Twitter;
-import twitter4j.TwitterException;
+
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -17,9 +17,10 @@ import java.io.PrintStream;
 @RestController
 public class TwitterController {
     @GetMapping(path = "/twitter/{Topic}")
-    public static String controller(@PathVariable String Topic) throws FileNotFoundException {
+    public String controller(@PathVariable String Topic) throws FileNotFoundException {
         Twitter twitter = TwitterClass.makeConnection();
-        String data = TwitterStream.getTweets(twitter,Topic);
+        TwitterStream output = new TwitterStream();
+        String data = output.getTweets(twitter,Topic);
         try (PrintStream out = new PrintStream(new FileOutputStream("data.txt"))) {
             out.print(data);
         }

@@ -4,23 +4,20 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import twitter4j.*;
 
-import javax.validation.constraints.Null;
+
 import java.time.Duration;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class TwitterStream {
 
 
-    public static String getTweets(Twitter twitter, String Topic) {
+    public String getTweets(Twitter twitter, String Topic) {
         Logger logger = LoggerFactory.getLogger(TwitterStream.class);
         long startTime = System.currentTimeMillis();
         AtomicInteger commentCount = new AtomicInteger();
         String sentimentResult;
         StringBuilder Postscore = new StringBuilder();
-        LocalDate Today = LocalDate.now();
         int n = 2;
         try{
             Query query = new Query(Topic);
@@ -31,6 +28,7 @@ public class TwitterStream {
             do{
                 result = twitter.search(query);
                 List<Status> tweets = result.getTweets();
+                TwitterSentiment analyzer = new TwitterSentiment();
                 for (Status tweet : tweets)
                 {
                     String txt = tweet.getText().trim()
@@ -38,7 +36,7 @@ public class TwitterStream {
                             .replaceAll("@[\\S]+", "")
                             .replaceAll("#", "")
                             .replaceAll("[\\s]+", " ");
-                    sentimentResult = new SentimentScore(tweet.getCreatedAt(),tweet.getId(), TwitterSentiment.analyseTwitter(txt),tweet.getRetweetCount()).toString();
+                    sentimentResult = new SentimentScore(tweet.getCreatedAt(),tweet.getId(), analyzer.analyseTwitter(txt),tweet.getRetweetCount()).toString();
                     commentCount.incrementAndGet();
                     if (sentimentResult != null){
                         Postscore.append(sentimentResult);
