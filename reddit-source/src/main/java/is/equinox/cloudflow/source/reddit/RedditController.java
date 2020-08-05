@@ -16,7 +16,8 @@ import java.io.PrintStream;
 public class RedditController {
     @GetMapping(path = "/reddit/{subR}/{n}/{search}")
     public String controller(@PathVariable String subR, @PathVariable int n, @PathVariable String search) throws FileNotFoundException {
-        String data = RedditStream.queryReddit(subR, n, search);
+        RedditStream output = new RedditStream();
+        String data = output.queryReddit(subR, n, search);
         try (PrintStream out = new PrintStream(new FileOutputStream("data.txt"))) {
             out.print(data);
         }

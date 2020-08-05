@@ -19,7 +19,8 @@ public class RedditInterface {
     @Bean
     @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))
     public MessageSource<String> RedditData() {
-        String reddit = RedditStream.queryReddit("StockMarket",1,"stock");
+        RedditStream output = new RedditStream();
+        String reddit = output.queryReddit("StockMarket",1,"stock");
         logger.info("\n\n {}",reddit );
         return ()-> MessageBuilder.withPayload(reddit).build();
     }

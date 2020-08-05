@@ -25,7 +25,7 @@ public class RedditApp {
     public static NetworkAdapter networkAdapter = new OkHttpNetworkAdapter(userAgent);
     public static RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
 
-    public static String queryReddit() {
+    public String queryReddit() {
         String subR = "tesla";
         int n = 5;
         StringBuilder Posts = new StringBuilder();

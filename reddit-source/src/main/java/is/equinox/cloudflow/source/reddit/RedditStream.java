@@ -34,7 +34,7 @@ public class RedditStream {
     public static RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
 
 
-    public static String queryReddit(String subR,int n,String searching) {
+    public String queryReddit(String subR,int n,String searching) {
         //String subR = "StockMarket";
         //int n = 1;
         //String searching = "[Watchlist]";
