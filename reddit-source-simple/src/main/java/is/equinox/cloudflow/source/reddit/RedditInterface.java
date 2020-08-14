@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.context.annotation.Bean;
 import org.springframework.integration.annotation.InboundChannelAdapter;
@@ -15,13 +14,15 @@ import org.springframework.messaging.support.MessageBuilder;
 import java.io.IOException;
 
 @SpringBootApplication
-@EnableBinding(Processor.class)
+@EnableBinding(Source.class)
 public class RedditInterface {
     Logger logger = LoggerFactory.getLogger(RedditInterface.class);
 
     @Bean
-    @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))    public MessageSource<String> RedditSentimentAnalysis() throws IOException {
-        String reddit = RedditApp.queryReddit();
+    @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "100000", maxMessagesPerPoll = "1"))
+    public MessageSource<String> Redditdata() throws IOException {
+        RedditApp app = new RedditApp();
+        String reddit = app.queryReddit();
         logger.info("\n\n {}" , reddit);
         return ()-> MessageBuilder.withPayload(reddit).build();
     }

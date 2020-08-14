@@ -13,8 +13,10 @@ import net.dean.jraw.tree.CommentNode;
 import com.google.common.collect.Streams;
 
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.Iterator;
+import java.util.Properties;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
@@ -23,15 +25,25 @@ import org.slf4j.LoggerFactory;
 
 
 public class RedditStream {
-    static String userName = "gaganeq";
-    static String passWord = "@1234@abcd@";
-    static String apiKey = "lnrJRkv6cq-uzA";
-    static String secret = "IY8Za1Cqj89kP7t18Yd-UNlBA-Q";
+    ReadProperties prop = new ReadProperties();
+    Properties User;
+    {
+        try {
+            User = prop.readPropertiesFile("C:/Users/gbhat/Desktop/CLoudflow/reddit-source-simple/src/main/resources/config.properties");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public static UserAgent userAgent = new UserAgent("desktop", "name.Java-API", "v0.1", userName);
-    public static Credentials credentials = Credentials.script(userName, passWord, apiKey, secret);
-    public static NetworkAdapter networkAdapter = new OkHttpNetworkAdapter(userAgent);
-    public static RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
+    String userName = User.getProperty("userName");
+    String passWord = User.getProperty("passWord");
+    String apiKey = User.getProperty("apiKey");
+    String secret = User.getProperty("secret");
+
+    public UserAgent userAgent = new UserAgent("desktop", "name.Java-API", "v0.1", userName);
+    public Credentials credentials = Credentials.script(userName, passWord, apiKey, secret);
+    public NetworkAdapter networkAdapter = new OkHttpNetworkAdapter(userAgent);
+    public RedditClient redditClient = OAuthHelper.automatic(networkAdapter, credentials);
 
 
     public String queryReddit(String subR,int n,String searching) {
