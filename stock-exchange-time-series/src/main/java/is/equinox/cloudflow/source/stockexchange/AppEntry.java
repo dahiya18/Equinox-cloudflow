@@ -8,6 +8,8 @@ import java.util.Arrays;
 public class AppEntry {
 
     public static void main(String[] args) throws Exception {
+        ReadProperties.getPropValues();
+
         Double[] output = StockProcessor.formatStocks();
 
         System.out.println(Arrays.toString(output));

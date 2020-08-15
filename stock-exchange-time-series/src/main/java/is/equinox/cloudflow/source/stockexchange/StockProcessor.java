@@ -20,7 +20,6 @@ public class StockProcessor {
             pricesOpen[i] = StringUtils.substringBetween(tmpRaw, "open\": \"", "\",");
         }
 
-
         if(pricesOpen[0] == null) {
             System.out.println("\nInvalid query, please check the input parameters\n");
             return null;

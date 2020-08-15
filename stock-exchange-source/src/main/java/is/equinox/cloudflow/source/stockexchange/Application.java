@@ -20,8 +20,9 @@ public class Application {
     Logger logger = LoggerFactory.getLogger(Application.class);
 
     @Bean
-    @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "20000", maxMessagesPerPoll = "1"))
+    @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "60000", maxMessagesPerPoll = "1"))
     public MessageSource<Double> addStocks() throws IOException {
+        ReadProperties.getPropValues();
         double stocks = Interface.generateStocks();
         logger.info("stocks : {}",stocks);
         return ()-> MessageBuilder.withPayload(stocks).build();

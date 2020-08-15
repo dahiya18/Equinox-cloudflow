@@ -9,17 +9,16 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.IOException;
 
 public class Interface {
-    // https://www.alphavantage.co/documentation/
-    public static String function = "GLOBAL_QUOTE";
-    public static String symbol = "TSLA";
-    public static String api = "A5K060RWV2X3BVP5";
+    static String function = ReadProperties.function;
+    static String symbol = ReadProperties.symbol;
+    static String api = ReadProperties.api;
 
     public static double generateStocks() throws IOException {
         HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
         HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(
-                "https://www.alphavantage.co/query?function=" + function +
-                        "&symbol=" + symbol +
-                        "&apikey=" + api));
+                "https://www.alphavantage.co/query?function=" + Interface.function +
+                        "&symbol=" + Interface.symbol +
+                        "&apikey=" + Interface.api));
 
         String rawResponse = request.execute().parseAsString();
         String getPrice = StringUtils.substringBetween(rawResponse, "price\": \"", "\",");
