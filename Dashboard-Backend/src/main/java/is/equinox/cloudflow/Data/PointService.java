@@ -11,10 +11,10 @@ import java.util.List;
 
 public class PointService {
 
-    private static List<DataPoint> points = new ArrayList<>();
-    private static long idCounter = 0;
+    private List<DataPoint> points = new ArrayList<>();
+    private long idCounter = 0;
 
-    static {
+    {
         points.add(new DataPoint(idCounter, new Date(0).getTime() , 0));
         idCounter++;
         points.add(new DataPoint(idCounter,new Date(1).getTime(),1));
@@ -23,7 +23,7 @@ public class PointService {
         System.out.println("Finished\n");
     }
 
-    public static void addPoints(Date d, int senti) {
+    public void addPoints(Date d, int senti) {
         points.add( new DataPoint(idCounter, d.getTime(), senti));
         idCounter++;
     }
