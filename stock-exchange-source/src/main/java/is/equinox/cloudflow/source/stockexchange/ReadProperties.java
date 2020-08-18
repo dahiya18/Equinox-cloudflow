@@ -18,9 +18,9 @@ public class ReadProperties {
 
             prop.load(input);
 
-            Interface.function = prop.getProperty("function");
-            Interface.symbol = prop.getProperty("symbol");
-            Interface.api = prop.getProperty("api");
+            function = prop.getProperty("function");
+            symbol = prop.getProperty("symbol");
+            api = prop.getProperty("api");
 
         } catch (IOException ex) {
             ex.printStackTrace();

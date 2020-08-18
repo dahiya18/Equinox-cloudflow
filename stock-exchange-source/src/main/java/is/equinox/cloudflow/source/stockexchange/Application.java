@@ -22,8 +22,10 @@ public class Application {
     @Bean
     @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "60000", maxMessagesPerPoll = "1"))
     public MessageSource<Double> addStocks() throws IOException {
+
+        Interface avInterface = new Interface();
         ReadProperties.getPropValues();
-        double stocks = Interface.generateStocks();
+        double stocks = avInterface.generateStocks();
         logger.info("stocks : {}",stocks);
         return ()-> MessageBuilder.withPayload(stocks).build();
     }

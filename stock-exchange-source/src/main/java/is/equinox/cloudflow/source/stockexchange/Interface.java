@@ -9,31 +9,47 @@ import org.apache.commons.lang3.StringUtils;
 import java.io.IOException;
 
 public class Interface {
-    static String function = ReadProperties.function;
-    static String symbol = ReadProperties.symbol;
-    static String api = ReadProperties.api;
 
-    public static double generateStocks() throws IOException {
+    public double generateStocks() throws IOException {
+
+        String func = ReadProperties.function;
+        String sym = ReadProperties.symbol;
+        String apiKey = ReadProperties.api;
+
         HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
-        HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(
-                "https://www.alphavantage.co/query?function=" + Interface.function +
-                        "&symbol=" + Interface.symbol +
-                        "&apikey=" + Interface.api));
 
-        String rawResponse = request.execute().parseAsString();
-        String getPrice = StringUtils.substringBetween(rawResponse, "price\": \"", "\",");
+        try {
+            HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(
+                    "https://www.alphavantage.co/query?function=" + func +
+                            "&symbol=" + sym +
+                            "&apikey=" + apiKey));
 
-        if(getPrice == null) {
-            System.out.println("Invalid query, please check the input parameters");
-            return -1;
-        } else {
+            String rawResponse = request.execute().parseAsString();
+            String getPrice = StringUtils.substringBetween(rawResponse, "price\": \"", "\",");
+
             return Double.parseDouble(getPrice);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return -1;
         }
     }
 
-    public static void setParams(String function, String symbol, String api) {
-        Interface.function = function;
-        Interface.symbol = symbol;
-        Interface.api = api;
+    public double generateStocks(String function, String symbol, String api) throws IOException {
+
+        try {
+            HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
+            HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(
+                    "https://www.alphavantage.co/query?function=" + function +
+                            "&symbol=" + symbol +
+                            "&apikey=" + api));
+
+            String rawResponse = request.execute().parseAsString();
+            String getPrice = StringUtils.substringBetween(rawResponse, "price\": \"", "\",");
+
+            return Double.parseDouble(getPrice);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new IOException(e.toString());
+        }
     }
 }
