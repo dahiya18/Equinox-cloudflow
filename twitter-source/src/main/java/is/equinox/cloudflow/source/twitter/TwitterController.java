@@ -18,7 +18,8 @@ import java.io.PrintStream;
 public class TwitterController {
     @GetMapping(path = "/twitter/{Topic}")
     public String controller(@PathVariable String Topic) throws FileNotFoundException {
-        Twitter twitter = TwitterClass.makeConnection();
+        TwitterClass User = new TwitterClass();
+        Twitter twitter = User.makeConnection();
         TwitterStream output = new TwitterStream();
         String data = output.getTweets(twitter,Topic);
         try (PrintStream out = new PrintStream(new FileOutputStream("data.txt"))) {
