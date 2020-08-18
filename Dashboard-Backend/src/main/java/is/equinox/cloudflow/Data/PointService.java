@@ -14,7 +14,7 @@ public class PointService {
     private List<DataPoint> points = new ArrayList<>();
     private long idCounter = 0;
 
-    {
+    public PointService() {
         points.add(new DataPoint(idCounter, new Date(0).getTime() , 0));
         idCounter++;
         points.add(new DataPoint(idCounter,new Date(1).getTime(),1));
