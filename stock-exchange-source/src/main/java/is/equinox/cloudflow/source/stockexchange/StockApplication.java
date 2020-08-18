@@ -26,6 +26,7 @@ public class Application {
         Interface avInterface = new Interface();
         ReadProperties.getPropValues();
         double stocks = avInterface.generateStocks();
+
         logger.info("stocks : {}",stocks);
         return ()-> MessageBuilder.withPayload(stocks).build();
     }

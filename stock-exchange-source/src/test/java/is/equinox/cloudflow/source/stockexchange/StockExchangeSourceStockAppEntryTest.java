@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class StockExchangeSourceAppEntryTest {
@@ -26,13 +26,13 @@ public class StockExchangeSourceAppEntryTest {
 
     @Test
     public void goodParameter_Test() throws IOException {
-        assertNotEquals(-1, avInterface.generateStocks("GLOBAL_QUOTE","TSLA","A5K060RWV2X3BVP5"));
+        assertFalse( Double.isNaN(avInterface.generateStocks("GLOBAL_QUOTE","TSLA","A5K060RWV2X3BVP5")));
     }
 
     @Test
     public void goodParameter_readTest() throws IOException {
         ReadProperties.getPropValues();
-        assertNotEquals(-1, avInterface.generateStocks());
+        assertFalse(Double.isNaN(avInterface.generateStocks()));
     }
 }
 
