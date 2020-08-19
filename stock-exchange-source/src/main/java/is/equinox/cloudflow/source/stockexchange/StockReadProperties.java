@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class ReadProperties {
+public class StockReadProperties {
 
     static String function;
     static String symbol;
@@ -13,14 +13,14 @@ public class ReadProperties {
     public static void getPropValues() throws IOException {
         String propFileName = "config.properties";
 
-        try (InputStream input = ReadProperties.class.getClassLoader().getResourceAsStream(propFileName)) {
+        try (InputStream input = StockReadProperties.class.getClassLoader().getResourceAsStream(propFileName)) {
             Properties prop = new Properties();
 
             prop.load(input);
 
-            Interface.function = prop.getProperty("function");
-            Interface.symbol = prop.getProperty("symbol");
-            Interface.api = prop.getProperty("api");
+            function = prop.getProperty("function");
+            symbol = prop.getProperty("symbol");
+            api = prop.getProperty("api");
 
         } catch (IOException ex) {
             ex.printStackTrace();
