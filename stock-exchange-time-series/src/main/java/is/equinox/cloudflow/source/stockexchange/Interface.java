@@ -9,27 +9,33 @@ import java.io.IOException;
 
 public class Interface {
 
-    static String function = ReadProperties.function;
-    static String symbol = ReadProperties.symbol;
-    static String interval = ReadProperties.interval;
-    static String api = ReadProperties.api;
-
     static String generateStocks() throws IOException {
+
+        String function = ReadProperties.function;
+        String symbol = ReadProperties.symbol;
+        String interval = ReadProperties.interval;
+        String api = ReadProperties.api;
+
         HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
         HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(
-                "https://www.alphavantage.co/query?function=" + Interface.function +
-                        "&symbol=" + Interface.symbol +
-                        "&interval=" + Interface.interval +
-                        "&apikey=" + Interface.api));
+                "https://www.alphavantage.co/query?function=" + function +
+                        "&symbol=" + symbol +
+                        "&interval=" + interval +
+                        "&apikey=" + api));
 
         return request.execute().parseAsString();
     }
 
-    public static void setParams(String function, String symbol, String interval, String api) {
-        Interface.function = function;
-        Interface.symbol = symbol;
-        Interface.interval = interval;
-        Interface.api = api;
+    static String generateStocks(String function, String symbol, String interval, String api) throws IOException {
+
+        HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
+        HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(
+                "https://www.alphavantage.co/query?function=" + function +
+                        "&symbol=" + symbol +
+                        "&interval=" + interval +
+                        "&apikey=" + api));
+
+        return request.execute().parseAsString();
     }
 }
 

@@ -7,39 +7,59 @@ import org.slf4j.LoggerFactory;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
+import java.sql.Timestamp;
 
 public class StockProcessor {
 
     Logger logger = LoggerFactory.getLogger(StockProcessor.class);
 
-    public static Double[] formatStocks() throws IOException {
+    public static String[] formatStocks() throws IOException {
         int timeSeriesLength = 100;
         String[] pricesOpen = new String[timeSeriesLength];
         String tmpRaw = Interface.generateStocks();
-        for(int i=0; i<=timeSeriesLength-1; i++) {
-            tmpRaw = StringUtils.substringAfter(tmpRaw, "},");
-            pricesOpen[i] = StringUtils.substringBetween(tmpRaw, "open\": \"", "\",");
-        }
 
-        if(pricesOpen[0] == null) {
-            System.out.println("\nInvalid query, please check the input parameters\n");
+        try {
+            for (int i = 0; i <= timeSeriesLength - 1; i++) {
+                tmpRaw = StringUtils.substringAfter(tmpRaw, "},");
+                double stockValue = Double.parseDouble(StringUtils.substringBetween(tmpRaw, "open\": \"", "\","));
+                Timestamp stockTime = Timestamp.valueOf("2" + StringUtils.substringBetween(tmpRaw, "\"2", "\":"));
+
+                pricesOpen[i] = stockTime + ", " + stockValue;
+            }
+
+            return pricesOpen;
+        } catch (NullPointerException e) {
+            e.printStackTrace();
             return null;
-        } else {
-            return Arrays.stream(pricesOpen)
-                    .map(Double::valueOf)
-                    .toArray(Double[]::new);
         }
     }
 
-    public static void write (Double[]x) throws IOException{
+    public static String[] formatStocks(String function, String symbol, String interval, String api) throws IOException {
+        int timeSeriesLength = 100;
+        String[] pricesOpen = new String[timeSeriesLength];
+        String tmpRaw = Interface.generateStocks(function, symbol, interval, api);
+
+        try {
+            for (int i = 0; i <= timeSeriesLength - 1; i++) {
+                tmpRaw = StringUtils.substringAfter(tmpRaw, "},");
+                double stockValue = Double.parseDouble(StringUtils.substringBetween(tmpRaw, "open\": \"", "\","));
+                Timestamp stockTime = Timestamp.valueOf("2" + StringUtils.substringBetween(tmpRaw, "\"2", "\":"));
+
+                pricesOpen[i] = stockTime + ", " + stockValue;
+            }
+
+            return pricesOpen;
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void write (String[]x) throws IOException{
         BufferedWriter outputWriter = null;
         outputWriter = new BufferedWriter(new FileWriter("Output"));
         for (int i = 0; i < x.length; i++) {
-            // Maybe:
-            outputWriter.write(x[i]+"");
-            // Or:
-            outputWriter.write(Double.toString(x[i]));
+            outputWriter.write(x[i]);
             outputWriter.newLine();
         }
         outputWriter.flush();

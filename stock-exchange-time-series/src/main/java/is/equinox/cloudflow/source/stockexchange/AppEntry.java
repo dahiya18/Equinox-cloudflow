@@ -10,7 +10,7 @@ public class AppEntry {
     public static void main(String[] args) throws Exception {
         ReadProperties.getPropValues();
 
-        Double[] output = StockProcessor.formatStocks();
+        String[] output = StockProcessor.formatStocks();
 
         System.out.println(Arrays.toString(output));
 

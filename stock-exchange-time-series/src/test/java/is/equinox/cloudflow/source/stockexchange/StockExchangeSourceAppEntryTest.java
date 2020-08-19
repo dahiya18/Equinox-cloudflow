@@ -10,14 +10,12 @@ public class StockExchangeSourceAppEntryTest {
 
     @Test
     public void badParameter_Test() throws IOException {
-        Interface.setParams("TIME_SERIES_DAILY","TSLAr", "null", "A5K060RWV2X3BVP5");
-        assertNull(StockProcessor.formatStocks());
+        assertNull(StockProcessor.formatStocks("TIME_SERIES_INTRADAY","TSLAr", "1min", "A5K060RWV2X3BVP5"));
     }
 
     @Test
     public void goodParameter_Test() throws IOException {
-        Interface.setParams("TIME_SERIES_DAILY","TSLA", "null","A5K060RWV2X3BVP5");
-        assertNotNull(StockProcessor.formatStocks());
+        assertNotNull(StockProcessor.formatStocks("TIME_SERIES_INTRADAY","TSLA", "1min","A5K060RWV2X3BVP5"));
     }
 
     @Test
