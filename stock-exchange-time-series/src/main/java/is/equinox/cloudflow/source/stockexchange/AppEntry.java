@@ -13,5 +13,7 @@ public class AppEntry {
         Double[] output = StockProcessor.formatStocks();
 
         System.out.println(Arrays.toString(output));
+
+        StockProcessor.write(output);
     }
 }

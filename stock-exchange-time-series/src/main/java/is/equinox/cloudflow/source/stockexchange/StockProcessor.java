@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -28,6 +30,20 @@ public class StockProcessor {
                     .map(Double::valueOf)
                     .toArray(Double[]::new);
         }
+    }
+
+    public static void write (Double[]x) throws IOException{
+        BufferedWriter outputWriter = null;
+        outputWriter = new BufferedWriter(new FileWriter("Output"));
+        for (int i = 0; i < x.length; i++) {
+            // Maybe:
+            outputWriter.write(x[i]+"");
+            // Or:
+            outputWriter.write(Double.toString(x[i]));
+            outputWriter.newLine();
+        }
+        outputWriter.flush();
+        outputWriter.close();
     }
 }
 
