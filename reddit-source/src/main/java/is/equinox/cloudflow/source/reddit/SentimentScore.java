@@ -40,7 +40,7 @@ class SentimentScore {
                 ", id='" + id + '\'' +
                 ", sentiment=" + polarity +
                 ", score=" + weight +
-                '}'+ '\n';
+                "}," + '\n';
     }
 
 }
