@@ -8,13 +8,13 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 
-public class Interface {
+public class StockController {
 
     public double generateStocks() throws IOException {
 
-        String func = ReadProperties.function;
-        String sym = ReadProperties.symbol;
-        String apiKey = ReadProperties.api;
+        String func = StockReadProperties.function;
+        String sym = StockReadProperties.symbol;
+        String apiKey = StockReadProperties.api;
 
         HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
 

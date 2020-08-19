@@ -15,17 +15,17 @@ import java.io.IOException;
 
 @SpringBootApplication
 @EnableBinding(Source.class)
-public class Application {
+public class StockApplication {
 
-    Logger logger = LoggerFactory.getLogger(Application.class);
+    Logger logger = LoggerFactory.getLogger(StockApplication.class);
 
     @Bean
     @InboundChannelAdapter(value = Source.OUTPUT,poller = @Poller(fixedDelay = "60000", maxMessagesPerPoll = "1"))
     public MessageSource<Double> addStocks() throws IOException {
 
-        Interface avInterface = new Interface();
-        ReadProperties.getPropValues();
-        double stocks = avInterface.generateStocks();
+        StockController avStockController = new StockController();
+        StockReadProperties.getPropValues();
+        double stocks = avStockController.generateStocks();
 
         logger.info("stocks : {}",stocks);
         return ()-> MessageBuilder.withPayload(stocks).build();

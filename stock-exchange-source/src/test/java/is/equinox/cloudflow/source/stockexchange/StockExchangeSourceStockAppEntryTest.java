@@ -8,14 +8,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class StockExchangeSourceAppEntryTest {
+public class StockExchangeSourceStockAppEntryTest {
 
-    private final Interface avInterface = new Interface();
+    private final StockController avStockController = new StockController();
 
     @Test
     public void badParameter_Test() {
         Exception exception = assertThrows(IOException.class, () -> {
-            avInterface.generateStocks("GLOBAL_QUOTE","TSLAque","A5K060RWV2X3BVP5");
+            avStockController.generateStocks("GLOBAL_QUOTE","TSLAque","A5K060RWV2X3BVP5");
         });
 
         String expectedMessage = "NullPointerException";
@@ -26,13 +26,13 @@ public class StockExchangeSourceAppEntryTest {
 
     @Test
     public void goodParameter_Test() throws IOException {
-        assertFalse( Double.isNaN(avInterface.generateStocks("GLOBAL_QUOTE","TSLA","A5K060RWV2X3BVP5")));
+        assertFalse( Double.isNaN(avStockController.generateStocks("GLOBAL_QUOTE","TSLA","A5K060RWV2X3BVP5")));
     }
 
     @Test
     public void goodParameter_readTest() throws IOException {
-        ReadProperties.getPropValues();
-        assertFalse(Double.isNaN(avInterface.generateStocks()));
+        StockReadProperties.getPropValues();
+        assertFalse(Double.isNaN(avStockController.generateStocks()));
     }
 }
 

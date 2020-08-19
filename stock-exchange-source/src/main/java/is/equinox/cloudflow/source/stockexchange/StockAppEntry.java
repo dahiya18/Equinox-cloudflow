@@ -12,12 +12,12 @@ import org.springframework.context.annotation.ComponentScan;
 import java.io.IOException;
 
 @ComponentScan(basePackages = {"is.equinox"})
-public class AppEntry implements ApplicationRunner, ApplicationContextAware {
+public class StockAppEntry implements ApplicationRunner, ApplicationContextAware {
 
     private ConfigurableApplicationContext applicationContext;
 
     public static void main(String[] args) throws IOException {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(StockApplication.class, args);
     }
 
     @Override
