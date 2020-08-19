@@ -1,12 +1,16 @@
 package is.equinox.cloudflow.source.twitter;
 
+
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
-public class TwitterClass implements TwitterInterface {
+
+public class TwitterClass {
 
 
     private String consumerKey = "dZFcwxXoeG2WqoWV40hTAGoS0";
@@ -14,18 +18,8 @@ public class TwitterClass implements TwitterInterface {
     private String accessToken = "796027954560192512-IoFgrZBHXckAQUPkC6OsUqb3v8gNprJ";
     private String accessTokenSecret = "BMhqBewo2h5qw2MuQdY4nSZ7oa82VO8yCPgEYsVFuZ47K";
 
-    public List<String> searchQuery(Twitter twitter, String searchQuery) throws TwitterException{
-        Query query = new Query(searchQuery);
-        query.setSince("2020-01-26");
-        query.setCount(1);
-        QueryResult result = twitter.search(query);
-        List<Status> tweets = result.getTweets();
-        return tweets.stream().map(item -> TwitterObjectFactory.getRawJSON(item))
-                .collect(Collectors.toList());
-
-    }
-
     public Twitter makeConnection(){
+        properties();
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true).setJSONStoreEnabled(true)
                 .setOAuthConsumerKey(consumerKey)
@@ -43,9 +37,19 @@ public class TwitterClass implements TwitterInterface {
         accessToken = token;
         accessTokenSecret = tokenSecret;
     }
+    public void properties(){
+        try (InputStream input = new FileInputStream("config.properties")) {
 
+            Properties prop = new Properties();
 
+            // load a properties file
+            prop.load(input);
 
+            // get the property value and print it out
+            this.setAuth(prop.getProperty(consumerKey), prop.getProperty(consumerSecret), prop.getProperty(accessToken), prop.getProperty(accessTokenSecret));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
-
+    }
 }
