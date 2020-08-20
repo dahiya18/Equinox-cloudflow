@@ -7,7 +7,7 @@ plugins {
 group = 'is.equinox'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
-archivesBaseName = 'reddit-sentiment-source'
+archivesBaseName = 'reddit-source-simple'
 
 
 repositories {
@@ -35,10 +35,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.apache.kafka:kafka-streams'
 	implementation 'org.springframework.kafka:spring-kafka'
-	compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '4.0.0'
-	compile group: 'edu.stanford.nlp', name: 'stanford-corenlp', version: '4.0.0', classifier: 'models'
-	// https://mvnrepository.com/artifact/com.google.guava/guava
-	compile group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+
 
 
 	// string formatting
