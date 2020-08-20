@@ -1,4 +1,9 @@
 #!/bin/sh
-export DATAFLOW_VERSION=2.6.0
-export SKIPPER_VERSION=2.5.0
+# put your folder path here
+
+# export HOST_MOUNT_PATH=/Users/pixel/Development/shadow/cloudflow/stockexchange-source/build/libs
+
+export DATAFLOW_VERSION=2.5.1.RELEASE
+
+export SKIPPER_VERSION=2.4.1.RELEASE
 docker-compose up
