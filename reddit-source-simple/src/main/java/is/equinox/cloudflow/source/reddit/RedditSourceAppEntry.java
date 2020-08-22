@@ -17,7 +17,7 @@ public class RedditSourceAppEntry implements ApplicationRunner, ApplicationConte
 
 
 	public static void main(String[] args) {
-		SpringApplication.run(RedditController.class, args);
+		SpringApplication.run(RedditInterface.class, args);
 	}
 
 	@Override
