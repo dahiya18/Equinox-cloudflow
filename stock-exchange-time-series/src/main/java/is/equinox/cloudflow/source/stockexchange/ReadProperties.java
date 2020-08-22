@@ -11,7 +11,7 @@ public class ReadProperties {
     static String interval;
     static String api;
 
-    public static void getPropValues() throws IOException {
+    void getPropValues() {
         String propFileName = "config.properties";
 
         try (InputStream input = ReadProperties.class.getClassLoader().getResourceAsStream(propFileName)) {

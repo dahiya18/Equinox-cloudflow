@@ -9,6 +9,7 @@
 *.iml
 *.ipr
 *.iws
+data.csv
 
 # Build data
 */bin
