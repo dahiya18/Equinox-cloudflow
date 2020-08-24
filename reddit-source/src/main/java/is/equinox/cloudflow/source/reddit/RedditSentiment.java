@@ -12,7 +12,7 @@ import edu.stanford.nlp.util.CoreMap;
 import java.util.Properties;
 
 public class RedditSentiment {
-    public static SentimentType analyseReddit(String reddit) {
+    public SentimentType analyseReddit(String reddit) {
         Properties props = new Properties();
         int Sentiment = 0;
         props.setProperty("annotators", "tokenize, ssplit, pos, parse, sentiment");

@@ -35,12 +35,10 @@ class SentimentScore {
 
     @Override
     public String toString() {
-        return "{" +
-                "timestamp=" + timestamp +
-                ", id='" + id + '\'' +
-                ", sentiment=" + polarity +
-                ", score=" + weight +
-                "}," + '\n';
+        return timestamp +
+                "," + id +
+                "," + polarity +
+                "," + weight + "\n";
     }
 
 }
