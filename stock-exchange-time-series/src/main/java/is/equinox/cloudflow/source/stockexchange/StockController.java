@@ -9,6 +9,7 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,39 +26,35 @@ public class StockController {
 
         String function = ReadProperties.function;
         String symbol = ReadProperties.symbol;
-        String interval = ReadProperties.interval;
         String api = ReadProperties.api;
 
         String stockURL = "https://financialmodelingprep.com/api/v3/" +
-                function + "/" +
-                interval + "/" +
+                function +
                 symbol +
-                "?apikey=" + api;
+                "apikey=" + api;
 
         HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
         HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(stockURL));
-
         return request.execute().parseAsString();
     }
 
-    String generateStocks(String function, String symbol, String interval, String api) throws IOException {
+    String generateStocks(String function, String symbol, String api) throws IOException {
 
         HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
-
         String stockURL = "https://financialmodelingprep.com/api/v3/" +
-                function + "/" +
-                interval + "/" +
+                function +
                 symbol +
-                "?apikey=" + api;
+                "apikey=" + api;
 
         HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(stockURL));
-
         return request.execute().parseAsString();
     }
 
     public String[] parse(String responseBody) throws JSONException {
         df.setTimeZone(TimeZone.getTimeZone("IST"));
-
+        if(!responseBody.startsWith("[")) {
+            responseBody = responseBody.substring(responseBody.indexOf("["), responseBody.indexOf("]") + 1);
+        }
         JSONArray stocks = new JSONArray(responseBody);
         String[] stockArr = new String[stocks.length()];
         if(stocks.length()==0) {
@@ -68,9 +65,13 @@ public class StockController {
                 String date = stock.getString("date");
                 double close = stock.getDouble("close");
 
-                Timestamp time = Timestamp.valueOf(date);
-
-                stockArr[i] = df.format(time) + ", " + close;
+                if(date.contains(":")) {
+                    Timestamp time = Timestamp.valueOf(date);
+                    stockArr[i] = df.format(time) + ", " + close;
+                } else {
+                    Date time = Date.valueOf(date);
+                    stockArr[i] = df.format(time) + ", " + close;
+                }
             }
             return stockArr;
         }

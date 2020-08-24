@@ -7,13 +7,10 @@ import org.slf4j.LoggerFactory;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 public class StockProcessor {
 
     Logger logger = LoggerFactory.getLogger(StockProcessor.class);
-    DateFormat df = new SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy");
 
     String[] formatStocks() throws IOException  {
         StockController controller = new StockController();
@@ -27,9 +24,10 @@ public class StockProcessor {
         }
     }
 
-    String[] formatStocks(String function, String symbol, String interval, String api) throws IOException {
+    String[] formatStocks(String function, String symbol, String api) throws IOException {
         StockController controller = new StockController();
-        String tmpRaw = controller.generateStocks(function, symbol, interval, api);
+        String tmpRaw = controller.generateStocks(function, symbol, api);
+
         try {
             return controller.parse(tmpRaw);
         } catch (Exception e) {
