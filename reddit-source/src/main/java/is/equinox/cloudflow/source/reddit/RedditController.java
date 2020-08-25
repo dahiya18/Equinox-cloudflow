@@ -18,7 +18,7 @@ public class RedditController {
     public String controller(@PathVariable String subR, @PathVariable int n, @PathVariable String search) throws FileNotFoundException {
         RedditStream output = new RedditStream();
         String data = output.queryReddit(subR, n, search);
-        try (PrintStream out = new PrintStream(new FileOutputStream("data.txt"))) {
+        try (PrintStream out = new PrintStream(new FileOutputStream("data.csv"))) {
             out.print(data);
         }
         return data;

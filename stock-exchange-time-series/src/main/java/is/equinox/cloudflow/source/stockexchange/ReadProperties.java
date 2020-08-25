@@ -8,7 +8,6 @@ public class ReadProperties {
 
     static String function;
     static String symbol;
-    static String interval;
     static String api;
 
     void getPropValues() {
@@ -22,7 +21,6 @@ public class ReadProperties {
 
             function = prop.getProperty("function");
             symbol = prop.getProperty("symbol");
-            interval = prop.getProperty("interval");
             api = prop.getProperty("api");
 
         } catch (IOException ex) {

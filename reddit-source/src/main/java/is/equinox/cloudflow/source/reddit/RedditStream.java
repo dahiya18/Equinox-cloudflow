@@ -29,7 +29,7 @@ public class RedditStream {
     Properties User;
     {
         try {
-            User = prop.readPropertiesFile("C:/Users/gbhat/Desktop/CLoudflow/reddit-source-simple/src/main/resources/config.properties");
+            User = prop.readPropertiesFile("config.properties");
         } catch (IOException e) {
             e.printStackTrace();
         }

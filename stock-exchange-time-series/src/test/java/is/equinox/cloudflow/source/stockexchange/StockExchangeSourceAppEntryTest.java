@@ -12,12 +12,12 @@ public class StockExchangeSourceAppEntryTest {
 
     @Test
     void badParameter_Test() throws IOException {
-        assertNull(processor.formatStocks("historical-chart","TSLAr", "1min", "d516597aa6499ad22b6c24d8ae06686d"));
+        assertNull(processor.formatStocks("historical-chart/1min/","TSLAr?", "d516597aa6499ad22b6c24d8ae06686d"));
     }
 
     @Test
     void goodParameter_Test() throws IOException {
-        assertNotNull(processor.formatStocks("historical-chart","TSLA", "1min","d516597aa6499ad22b6c24d8ae06686d"));
+        assertNotNull(processor.formatStocks("historical-chart/1min/","TSLA?", "d516597aa6499ad22b6c24d8ae06686d"));
     }
 
     @Test
