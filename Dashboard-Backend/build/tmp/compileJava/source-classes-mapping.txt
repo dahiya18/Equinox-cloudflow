@@ -4,5 +4,7 @@ is/equinox/cloudflow/BackendSpringApplication.java
  is.equinox.cloudflow.BackendSpringApplication
 is/equinox/cloudflow/Data/PointService.java
  is.equinox.cloudflow.Data.PointService
+ is.equinox.cloudflow.Data.PointService$1
+ is.equinox.cloudflow.Data.PointService$2
 is/equinox/cloudflow/Data/PointResource.java
  is.equinox.cloudflow.Data.PointResource

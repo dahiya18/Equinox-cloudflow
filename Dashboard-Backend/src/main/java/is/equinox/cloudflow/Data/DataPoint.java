@@ -1,21 +1,23 @@
 package is.equinox.cloudflow.Data;
 
+import java.util.Date;
+
 public class DataPoint {
-    private long date;
-    private int sentiment;
+    private Date date;
+    private long sentiment;
     private long id;
 
-    public DataPoint( long id, long date, int sentiment){
+    public DataPoint( long id, Date date, long sentiment){
         this.date = date;
         this.sentiment = sentiment;
         this.id = id;
     }
 
-    public long getDate(){
+    public Date getDate(){
         return this.date;
     }
 
-    public int getSentiment(){
+    public long getSentiment(){
         return this.sentiment;
     }
 

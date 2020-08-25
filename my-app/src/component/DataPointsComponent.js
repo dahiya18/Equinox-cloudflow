@@ -12,7 +12,14 @@ class DataPointsComponent extends Component {
         super(props)
 
         this.state = {
-          points : [{id:1,date:(new Date(111)).getTime(),sentiment:100},{}]
+          points : [
+                        [{id:1,date:(new Date(0)),sentiment:0},{}],
+                        [{id:1,date:(new Date(0)),sentiment:0},{}],
+                        [{id:1,date:(new Date(0)),sentiment:0},{}]
+                   ],
+          twitterPoints : [{id:1, date: (new Date(0)),sentiment: 0}, {}],
+          redditPoints : [{id:1,date: (new Date(0)),sentiment: 0}, {}],
+          stockPoints : [{id:1,date: (new Date(0)),sentiment: 0}, {}]
         }
         this.refreshPoints = this.refreshPoints.bind(this)
     }
@@ -20,10 +27,10 @@ class DataPointsComponent extends Component {
 
     refreshPoints() {
 
-        DataPointService.getAllPoints()
+        DataPointService.getPoints()
             .then(response => this.setState({
                 points : response.data
-            }))
+            }));
 
     }
 
@@ -34,46 +41,28 @@ class DataPointsComponent extends Component {
 
         return (
             <div>
-            <h1> Graph points to be plotted </h1>
-            <div className="conatiner">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th> ID </th>
-                            <th> Date </th>
-                            <th> Sentiment </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {
-                        this.state.points.map(
-                            point =>
-                                <tr key={point.id}>
-                                    <td>{point.id}</td>
-                                    <td>{point.date}</td>
-                                    <td>{point.sentiment}</td>
-                                </tr>
-                        )
-                    }
 
-                    </tbody>
-                </table>
+            <div className="conatiner">
                 <div id="container">
                                   <HighchartsReact
                                   class = "highcharts-figure"
                                   highcharts={Highcharts}
+                                  constructorType={'stockChart'}
                                   options={{
 
                                                                chart: {
-                                                                 zoomType: 'x'
+                                                                 zoomType: 'x',
+
+
                                                                },
 
                                                                title: {
-                                                                 text: 'Highcharts drawing ' + 50000 + ' points'
+                                                                 text: 'Twitter Social Response',
+
                                                                },
 
                                                                subtitle: {
-                                                                 text: 'Social Response'
+                                                                 text: 'tweet sentiment'
                                                                },
 
                                                                tooltip: {
@@ -84,15 +73,97 @@ class DataPointsComponent extends Component {
                                                                  type: 'datetime'
                                                                },
 
+
+
                                                                series: [{
-                                                                 data: this.state.points.map(p => [p.date,p.sentiment]),
-                                                                 lineWidth: 0.5,
-                                                                 name: 'Hourly data points'
+                                                                 data: this.state.points[0].map(p => [Date.parse(p.date),parseInt(p.sentiment)]),
+                                                                 lineWidth: 1.5,
+                                                                 name: ''
                                                                }]
 
                                                            }}
-                />
+                                  />
+
+
+                                   <p> </p>
+                                  <HighchartsReact
+                                  class = "highcharts-figure"
+                                  highcharts={Highcharts}
+                                  constructorType={'stockChart'}
+                                  options={{
+
+                                                               chart: {
+                                                                 zoomType: 'x',
+
+                                                               },
+
+                                                               title: {
+                                                                 text: 'Reddit Social Response'
+                                                               },
+
+                                                               subtitle: {
+                                                                 text: 'reddit sentiment'
+                                                               },
+
+                                                               tooltip: {
+                                                                 valueDecimals: 0
+                                                               },
+
+                                                               xAxis: {
+                                                                 type: 'datetime'
+                                                               },
+
+                                                               series: [{
+                                                                 data: this.state.points[1].map(p => [Date.parse(p.date),parseInt(p.sentiment)]),
+                                                                 lineWidth: 1.5,
+                                                                 name: ''
+                                                               }]
+
+                                                           }}
+                                  />
+
+                                   <p> </p>
+                                  <HighchartsReact
+                                  class = "highcharts-figure"
+                                  highcharts={Highcharts}
+                                  constructorType={'stockChart'}
+                                  options = {{
+                                                                  chart: {
+                                                                    zoomType: 'x',
+
+
+
+                                                                  },
+
+                                                                  title: {
+                                                                    text: ' Stock Market Behaviour'
+                                                                  },
+
+                                                                  subtitle: {
+                                                                    text: 'Stock prices'
+                                                                  },
+
+                                                                  tooltip: {
+                                                                    valueDecimals: 0
+                                                                  },
+
+                                                                  xAxis: {
+                                                                    type: 'datetime'
+                                                                  },
+
+                                                                  series: [{
+                                                                    data: this.state.points[2].map(p => [Date.parse(p.date), p.sentiment]),
+                                                                    lineWidth: 1.5,
+                                                                    name: ''
+                                                                  }]
+
+                                                               }}
+
+                               />
+                                <p> </p>
+
                 </div>
+
             </div>
             </div>
 
