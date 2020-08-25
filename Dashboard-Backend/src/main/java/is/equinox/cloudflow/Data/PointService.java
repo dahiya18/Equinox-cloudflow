@@ -116,7 +116,7 @@ public class PointService {
 
     public void ReadStock(){
         check();
-        String csvFile ="./Dashboard-Backend/src/main/java/is/equinox/cloudflow/Data/stock_data.csv" ;
+        String csvFile ="C:/Users/harme/Desktop/cloudflow/Dashboard-Backend/src/main/java/is/equinox/cloudflow/Data/stock_data.csv" ;
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
