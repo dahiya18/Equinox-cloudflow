@@ -5,7 +5,10 @@ import DataPointService from '../service/DataPointService';
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
 
-
+var twitter;
+var reddit;
+var stock;
+var seriesOptions;
 class DataPointsComponent extends Component {
 
     constructor(props) {
@@ -13,13 +16,10 @@ class DataPointsComponent extends Component {
 
         this.state = {
           points : [
-                        [{id:1,date:(new Date(0)),sentiment:0},{}],
-                        [{id:1,date:(new Date(0)),sentiment:0},{}],
-                        [{id:1,date:(new Date(0)),sentiment:0},{}]
-                   ],
-          twitterPoints : [{id:1, date: (new Date(0)),sentiment: 0}, {}],
-          redditPoints : [{id:1,date: (new Date(0)),sentiment: 0}, {}],
-          stockPoints : [{id:1,date: (new Date(0)),sentiment: 0}, {}]
+                        [{id:0,date:(new Date("2020/07/15")),sentiment:0}],
+                        [{id:0,date:(new Date("2020/07/15")),sentiment:1}],
+                        [{id:0,date:(new Date("2020/07/15")),sentiment:2}]
+                   ]
         }
         this.refreshPoints = this.refreshPoints.bind(this)
     }
@@ -38,12 +38,58 @@ class DataPointsComponent extends Component {
         this.refreshPoints();
     }
     render(){
+         twitter = this.state.points[0].map(p => [Date.parse(p.date),parseInt(p.sentiment)])
+         reddit = this.state.points[1].map(p => [Date.parse(p.date),parseInt(p.sentiment)])
+         stock = this.state.points[2].map(p => [Date.parse(p.date),parseInt(p.sentiment)])
+         seriesOptions = [
+                            {name: 'TWITTER', data: twitter},
+                            {name: 'REDDIT', data: reddit},
+                            {name: 'STOCK', data: stock}
+                         ]
 
         return (
+
             <div>
 
             <div className="conatiner">
                 <div id="container">
+                                  <HighchartsReact
+                                  class = "highcharts-figure"
+                                  highcharts={Highcharts}
+                                  constructorType={'stockChart'}
+                                  options={{
+                                                                chart: {
+                                                                         zoomType: 'x',
+                                                                       },
+
+                                                                rangeSelector: {
+                                                                           selected: 4
+                                                                       },
+
+
+
+                                                               plotOptions: {
+                                                                   series: {
+                                                                       compare: 'percent',
+                                                                       showInNavigator: true
+                                                                   }
+                                                               },
+
+                                                               tooltip: {
+                                                                   pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.change}%)<br/>',
+                                                                   valueDecimals: 2,
+                                                                   split: true
+                                                               },
+
+
+
+                                                               series: seriesOptions
+
+                                                           }}
+                                  />
+
+
+
                                   <HighchartsReact
                                   class = "highcharts-figure"
                                   highcharts={Highcharts}

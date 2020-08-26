@@ -11,11 +11,10 @@
       <change beforePath="$PROJECT_DIR$/../Dashboard-Backend/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Dashboard-Backend/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Dashboard-Backend/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Dashboard-Backend/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Dashboard-Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Dashboard-Backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dashboard-Backend/build/classes/java/main/is/equinox/cloudflow/Data/PointService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Dashboard-Backend/build/classes/java/main/is/equinox/cloudflow/Data/PointService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dashboard-Backend/src/main/java/is/equinox/cloudflow/Data/PointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Dashboard-Backend/src/main/java/is/equinox/cloudflow/Data/PointService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dashboard-Backend/src/main/java/is/equinox/cloudflow/Data/reddit_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Dashboard-Backend/src/main/java/is/equinox/cloudflow/Data/reddit_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Dashboard-Backend/src/main/java/is/equinox/cloudflow/Data/twitter_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Dashboard-Backend/src/main/java/is/equinox/cloudflow/Data/twitter_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dashboard-Backend/src/main/java/is/equinox/cloudflow/Data/stock_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Dashboard-Backend/src/main/java/is/equinox/cloudflow/Data/stock_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/DataPointsComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/DataPointsComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/GraphApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/GraphApp.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -39,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/DataPointsComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2293">
-              <caret line="21" column="64" lean-forward="true" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+            <state relative-caret-position="105">
+              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
             </state>
           </provider>
         </entry>
@@ -77,17 +76,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service/DataPointService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="189">
+              <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/component/GraphApp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3465">
-              <caret line="165" selection-start-line="165" selection-end-line="165" />
+            <state relative-caret-position="295">
+              <caret line="172" lean-forward="true" selection-start-line="172" selection-end-line="172" />
             </state>
           </provider>
         </entry>
@@ -103,9 +102,9 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/service/DataPointService.js" />
-        <option value="$PROJECT_DIR$/src/component/GraphApp.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/component/GraphApp.css" />
+        <option value="$PROJECT_DIR$/src/component/GraphApp.js" />
         <option value="$PROJECT_DIR$/src/component/DataPointsComponent.js" />
       </list>
     </option>
@@ -122,6 +121,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -151,7 +151,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -189,18 +188,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.125" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.20922747" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.207483" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49946353" weight="0.32993197" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.31746033" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5005365" side_tool="true" weight="0.32993197" />
       <window_info anchor="bottom" id="Messages" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
@@ -252,13 +251,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logo.svg" />
-    <entry file="file://$PROJECT_DIR$/src/component/DataPointsComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2293">
-          <caret line="21" column="64" lean-forward="true" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/GraphApp.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="441">
@@ -281,15 +273,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service/DataPointService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="189">
+          <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/DataPointsComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/component/GraphApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3465">
-          <caret line="165" selection-start-line="165" selection-end-line="165" />
+        <state relative-caret-position="295">
+          <caret line="172" lean-forward="true" selection-start-line="172" selection-end-line="172" />
         </state>
       </provider>
     </entry>

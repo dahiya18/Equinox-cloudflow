@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a299de7f-5aa8-4346-bc93-b0610fb13f0b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/is/equinox/cloudflow/Data/PointService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/is/equinox/cloudflow/Data/PointService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/PointService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/PointService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/reddit_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/reddit_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/twitter_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/twitter_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/stock_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/stock_data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../my-app/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../my-app/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app/src/component/DataPointsComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/../my-app/src/component/DataPointsComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../my-app/src/component/GraphApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/../my-app/src/component/GraphApp.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,11 +36,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/PointResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+            <state relative-caret-position="231">
+              <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -53,38 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/PointService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="118" column="56" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/twitter_data.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28896">
-              <caret line="1376" selection-start-line="1376" selection-end-line="1376" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/stock_data.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/reddit_data.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="1013" column="47" lean-forward="true" selection-start-line="1013" selection-start-column="47" selection-end-line="1013" selection-end-column="47" />
+            <state relative-caret-position="357">
+              <caret line="38" column="5" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="38" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -104,8 +78,9 @@
         <option value="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/PointResource.java" />
         <option value="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/DataPoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/twitter_data.csv" />
-        <option value="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/reddit_data.csv" />
         <option value="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/PointService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/reddit_data.csv" />
+        <option value="$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/stock_data.csv" />
       </list>
     </option>
   </component>
@@ -121,6 +96,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -168,7 +144,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -218,10 +193,10 @@
       <window_info id="UI Designer" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.18508583" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.18776824" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" weight="0.32993197" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.28684807" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.22902495" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
@@ -306,29 +281,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/reddit_data.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="1013" column="47" lean-forward="true" selection-start-line="1013" selection-start-column="47" selection-end-line="1013" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/twitter_data.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28896">
-          <caret line="1376" selection-start-line="1376" selection-end-line="1376" />
+        <state relative-caret-position="432">
+          <caret line="1030" selection-start-line="1030" selection-end-line="1030" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/stock_data.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="39" lean-forward="true" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        <state relative-caret-position="483">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/PointResource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/twitter_data.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="30" column="29" lean-forward="true" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+        <state relative-caret-position="28833">
+          <caret line="1376" selection-start-line="1376" selection-end-line="1376" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/PointService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="38" column="5" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="38" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -339,10 +314,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/PointService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/is/equinox/cloudflow/Data/PointResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="118" column="56" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
+        <state relative-caret-position="231">
+          <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
         </state>
       </provider>
     </entry>
